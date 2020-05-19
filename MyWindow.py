@@ -43,7 +43,7 @@ class m_MainWindow(QMainWindow):
 
 
 	def showCV2CapRawImage(self,label,rawImage):
-		_,_,w,h=self.ui.labelCamera0.geometry().getRect() # geometry() return QRect
+		_,_,w,h=label.geometry().getRect() # geometry() return QRect
 		img = cv2.resize(rawImage, (w, h))
 		img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 		Qimg = QtGui.QImage(img.data, img.shape[1], img.shape[0], QtGui.QImage.Format_RGB888)
