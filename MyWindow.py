@@ -3,7 +3,7 @@
 import sys
 from myUI import Ui_MainWindow
 from PyQt5 import QtCore,QtWidgets,QtGui
-from PyQt5.QtWidgets import QApplication,QMainWindow
+from PyQt5.QtWidgets import QApplication,QMainWindow,QFileDialog
 import cv2
 
 
@@ -13,32 +13,34 @@ class m_MainWindow(QMainWindow):
 		self.ui=Ui_MainWindow()
 		self.ui.setupUi(self)
 		
-		self.timerCamera0 = QtCore.QTimer()
+		self.timerVideo0 = QtCore.QTimer()
 		self.cap0 = cv2.VideoCapture()
-		self.cam0Addr=0
-		self.camera0State=0
+		self.video0Addr=0
 
 		self.slotInit()
 		
 	def slotInit(self):
-		self.timerCamera0.timeout.connect(self.showCamera0)
+		self.timerVideo0.timeout.connect(self.showVideo0)
 
-	def showCameraButtonClicked(self):
-		if self.timerCamera0.isActive() == False:
+	def showVideoButtonClicked(self):
+		if self.timerVideo0.isActive() == False:
 			flag = self.cap0.open(self.cam0Addr)
 			if flag == False:
 				QtWidgets.QMessageBox.warning(self, "Warning", "请检测相机与电脑是否连接正确")
 			else:
-				self.timerCamera0.start(30) # ms,about 30fps
-				print('here')
+				self.timerVideo0.start(30) # ms,about 30fps
 				self.ui.buttonSwitchCamera.setText('停止')
 		else:
-			self.timerCamera0.stop()
+			self.timerVideo0.stop()
 			self.cap0.release()
 			self.ui.labelCamera0.clear()
 			self.ui.buttonSwitchCamera.setText('开始')
+
+	def chooseFileButtonClicked(self):
+		self.video0Addr=QFileDialog.getOpenFileName(self,'选择文件')
+		self.ui.labelFilePath.setText(self.video0Addr)
 		
-	def showCamera0(self):
+	def showVideo0(self):
 		flag, image = self.cap0.read()
 		self.showCV2CapRawImage(self.ui.labelCamera0,image)
 
