@@ -30,7 +30,6 @@ class m_MainWindow(QMainWindow):
 				QtWidgets.QMessageBox.warning(self, "Warning", "请检测相机与电脑是否连接正确")
 			else:
 				self.timerCamera0.start(30) # ms,about 30fps
-				print('here')
 				self.ui.buttonSwitchCamera.setText('停止')
 		else:
 			self.timerCamera0.stop()
