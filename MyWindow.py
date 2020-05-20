@@ -24,25 +24,26 @@ class m_MainWindow(QMainWindow):
 
 	def showVideoButtonClicked(self):
 		if self.timerVideo0.isActive() == False:
-			flag = self.cap0.open(self.cam0Addr)
+			flag = self.cap0.open(self.video0Addr)
 			if flag == False:
 				QtWidgets.QMessageBox.warning(self, "Warning", "请检测相机与电脑是否连接正确")
 			else:
 				self.timerVideo0.start(30) # ms,about 30fps
-				self.ui.buttonSwitchCamera.setText('停止')
+				self.ui.buttonStart.setText('停止')
 		else:
 			self.timerVideo0.stop()
 			self.cap0.release()
-			self.ui.labelCamera0.clear()
-			self.ui.buttonSwitchCamera.setText('开始')
+			self.ui.labelVideo0.clear()
+			self.ui.labelFilePath.setText('尚未选择文件')
+			self.ui.buttonStart.setText('开始')
 
 	def chooseFileButtonClicked(self):
-		self.video0Addr=QFileDialog.getOpenFileName(self,'选择文件')
+		self.video0Addr,_=QFileDialog.getOpenFileName(self,'选择文件')
 		self.ui.labelFilePath.setText(self.video0Addr)
 		
 	def showVideo0(self):
 		flag, image = self.cap0.read()
-		self.showCV2CapRawImage(self.ui.labelCamera0,image)
+		self.showCV2CapRawImage(self.ui.labelVideo0,image)
 
 
 	def showCV2CapRawImage(self,label,rawImage):
