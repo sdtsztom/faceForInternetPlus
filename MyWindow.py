@@ -43,8 +43,11 @@ class m_MainWindow(QMainWindow):
 		
 	def showVideo0(self):
 		flag, image = self.cap0.read()
-		self.showCV2CapRawImage(self.ui.labelVideo0,image)
-
+		if flag:
+			self.showCV2CapRawImage(self.ui.labelVideo0,image)
+		else: # read over
+			self.timerVideo0.stop()
+			self.ui.buttonStart.setText('开始')
 
 	def showCV2CapRawImage(self,label,rawImage):
 		_,_,w,h=label.geometry().getRect() # geometry() return QRect
