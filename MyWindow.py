@@ -90,6 +90,14 @@ class m_MainWindow(QMainWindow):
 		frameW,frameH=self.video0Resolution
 		return [frameW*ratioXStart, frameH*ratioYStart, frameW*ratioW, frameH*ratioH]
 
+	def Alg1Toggled(self):
+		pass
+
+	def Alg2Toggled(self):
+		pass
+
+	def Alg3Toggled(self):
+		pass
 
 app = QApplication(sys.argv)
 main_window = m_MainWindow()

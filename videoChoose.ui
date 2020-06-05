@@ -139,7 +139,7 @@
    <slot>showVideoButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>457</x>
+     <x>298</x>
      <y>620</y>
     </hint>
     <hint type="destinationlabel">
@@ -155,7 +155,7 @@
    <slot>chooseFileButtonClicked()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>498</x>
+     <x>428</x>
      <y>630</y>
     </hint>
     <hint type="destinationlabel">
@@ -164,9 +164,60 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>radioAlg1</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Alg1Toggled()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>776</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>174</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioAlg2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Alg2Toggled()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>908</x>
+     <y>75</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1180</x>
+     <y>134</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>radioAlg3</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>Alg3Toggled()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1069</x>
+     <y>74</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1195</x>
+     <y>68</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>showVideoButtonClicked()</slot>
   <slot>chooseFileButtonClicked()</slot>
+  <slot>Alg1Toggled()</slot>
+  <slot>Alg2Toggled()</slot>
+  <slot>Alg3Toggled()</slot>
  </slots>
 </ui>

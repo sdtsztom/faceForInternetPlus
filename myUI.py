@@ -52,6 +52,9 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.buttonStart.clicked.connect(MainWindow.showVideoButtonClicked)
         self.pushChooseVideo.clicked.connect(MainWindow.chooseFileButtonClicked)
+        self.radioAlg1.toggled['bool'].connect(MainWindow.Alg1Toggled)
+        self.radioAlg2.toggled['bool'].connect(MainWindow.Alg2Toggled)
+        self.radioAlg3.toggled['bool'].connect(MainWindow.Alg3Toggled)
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
